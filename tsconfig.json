@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "target": "ES6",
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2020", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "jsx": "preserve",
+    "jsxFactory": "jsx",
+    "types": ["node", "react"],
+    "paths": {
+      "@theme-ui/css": ["node_modules/@theme-ui/css"]
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "exclude": ["./node_modules", "./build", "./dist", "**/*.js", "**/*.json"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}
