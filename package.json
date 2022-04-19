@@ -1,9 +1,9 @@
 {
-  "name": "paidprogramming",
-  "homepage": "https://alexndremelyanov.github.io/paidprogramming",
+  "name": "delta-components",
+  "homepage": "https://alexndremelyanov.github.io/delta-components",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexndremelyanov/paidprogramming"
+    "url": "https://github.com/alexndremelyanov/delta-components"
   },
   "version": "0.0.1",
   "license": "MIT",
