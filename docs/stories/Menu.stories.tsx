@@ -1,24 +1,12 @@
-import {
-  useFloating,
-  offset,
-  autoPlacement,
-  arrow,
-  shift,
-  Alignment
-} from '@floating-ui/react-dom';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { jsx, useThemeUI } from '@theme-ui/core';
-import { Fragment, useRef, useState } from 'react';
+import { jsx } from '@theme-ui/core';
+import { Fragment, useRef } from 'react';
 import {
   EllipsisText,
   MenuButton,
   Menu,
   Tooltip,
-  Box,
   MenuItem,
-  AsButton,
-  useClickAwayListener,
-  TrapFocus,
   AsAnchor,
   useMenuManager
 } from '../../lib';
