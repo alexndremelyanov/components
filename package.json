@@ -1,9 +1,9 @@
 {
   "name": "delta-components",
-  "homepage": "https://alexndremelyanov.github.io/delta-components",
+  "homepage": "https://alexndremelyanov.github.io/components",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexndremelyanov/delta-components"
+    "url": "https://github.com/alexndremelyanov/components"
   },
   "version": "0.0.1",
   "license": "MIT",
