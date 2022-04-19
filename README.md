@@ -1,18 +1,18 @@
 # components
 
-[Storybook](https://alexndremelyanov.github.io/components)
-[GitHub](https://github.com/alexndremelyanov/components)
+[Storybook](https://alexndremelyanov.github.io/delta-components)
+[GitHub](https://github.com/alexndremelyanov/delta-components)
 
 ## Installation
 
 ```sh
-npm install --save components
+npm install --save delta-components
 ```
 
 ## Usage
 
 ```jsx
-import { Container, Card, CardHeading, CardBody } from 'components';
+import { Container, Card, CardHeading, CardBody } from 'delta-components';
 
 export default function App() {
   return (
