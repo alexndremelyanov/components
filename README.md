@@ -1,18 +1,18 @@
-# paidprogramming
+# components
 
-[Storybook](https://alexndremelyanov.github.io/paidprogramming)
-[GitHub](https://github.com/alexndremelyanov/paidprogramming)
+[Storybook](https://alexndremelyanov.github.io/delta-components)
+[GitHub](https://github.com/alexndremelyanov/delta-components)
 
 ## Installation
 
 ```sh
-npm install --save paidprogramming
+npm install --save delta-components
 ```
 
 ## Usage
 
 ```jsx
-import { Container, Card, CardHeading, CardBody } from 'paidprogramming';
+import { Container, Card, CardHeading, CardBody } from 'delta-components';
 
 export default function App() {
   return (
