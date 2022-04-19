@@ -1,18 +1,18 @@
-# paidprogramming
+# components
 
-[Storybook](https://alexndremelyanov.github.io/paidprogramming)
-[GitHub](https://github.com/alexndremelyanov/paidprogramming)
+[Storybook](https://alexndremelyanov.github.io/components)
+[GitHub](https://github.com/alexndremelyanov/components)
 
 ## Installation
 
 ```sh
-npm install --save paidprogramming
+npm install --save components
 ```
 
 ## Usage
 
 ```jsx
-import { Container, Card, CardHeading, CardBody } from 'paidprogramming';
+import { Container, Card, CardHeading, CardBody } from 'components';
 
 export default function App() {
   return (
