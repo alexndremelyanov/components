@@ -1,25 +1,24 @@
 import { jsx } from '@theme-ui/core';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
-import {
-  BUTTON_BORDER_RADIUS,
-  ICON_MEDIUM_SIZE,
-  ICON_SMALL_SIZE
-} from '../../variables';
+import { BUTTON_BORDER_RADIUS, ICON_SMALL_SIZE } from '../../variables';
 import { AsButton } from '../AsButton';
-import { Box } from '../Box';
+
 export interface MenuButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isOpen?: boolean;
+  manager: any;
 }
-
 export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
-  ({ children, disabled, isOpen, ...rest }: MenuButtonProps, ref) => {
+  ({ children, manager, disabled, ...rest }: MenuButtonProps, __) => {
+    const { display, reference, hide, show } = manager;
+    const isOpen = display === 'visible';
     return (
       <AsButton
-        ref={ref}
+        ref={reference}
+        onClick={() => (isOpen ? hide() : show())}
         disabled={disabled}
         sx={{
+          width: 'fit-content',
           backgroundColor: isOpen
             ? 'background_elevated_highlight'
             : 'text_negative',

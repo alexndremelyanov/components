@@ -8,11 +8,16 @@ export const MenuItem = ({ ...rest }: MenuItemProps) => {
       sx={{
         '& > a, button': {
           width: '100%',
-          paddingX: '4px',
-          minHeight: '42px',
+          padding: '12px 8px 12px 12px',
           display: 'flex',
+          borderRadius: 1,
+          '&:hover, &:active, &:focus, &:focus-visible': {
+            backgroundColor: 'rgba(255,255,255,.1)'
+          },
+          color: 'text_base',
           alignItems: 'center',
-          height: '100%'
+          height: '100%',
+          fontWeight: 500
         }
       }}
       {...rest}
