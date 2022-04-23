@@ -11,6 +11,7 @@ export const encoreDarkScheme = {
     text_base: '#FFF',
     text_subdued: '#B3B3B3',
     text_bright_accent: '#1ed760',
+    text_pepega: '#FFFFE6',
     text_warning: '#ffa42b',
     text_negative: '#000000',
     text_positive: '#1ed760',

@@ -1,5 +1,4 @@
 import { jsx } from '@theme-ui/core';
-import Tippy from '@tippyjs/react';
 import { forwardRef, HTMLAttributes } from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Box, BoxProps } from './Box';

@@ -4,9 +4,9 @@ export const useClickAwayListener = (ref, callback, exceptions: any = []) => {
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        ref.current &&
-        !exceptions.some(e => e?.current?.contains(event.target)) &&
-        !ref.current.contains(event.target)
+        ref &&
+        !exceptions.some(e => e?.contains(event.target)) &&
+        !ref.contains(event.target)
       ) {
         callback();
       }

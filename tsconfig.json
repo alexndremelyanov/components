@@ -28,5 +28,5 @@
     "isolatedModules": true
   },
   "exclude": ["./node_modules", "./build", "./dist", "**/*.js", "**/*.json"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/utils/mergeRefs.tsz"]
 }

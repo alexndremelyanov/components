@@ -6,15 +6,8 @@ import {
   shift
 } from '@floating-ui/react-dom';
 import { RefObject, useRef, useState } from 'react';
-export type MenuManagerOptions =
-  | {
-      arrowRef: RefObject<any> | undefined;
-    }
-  | undefined;
-export const useMenuManager = (
-  { arrowRef }: MenuManagerOptions = { arrowRef: undefined }
-) => {
-  const emptyRef = useRef(null);
+export interface MenuManagerOptions {}
+export const useMenuManager = () => {
   const [display, setDisplay] = useState<'visible' | 'hidden'>('hidden');
   const show = () => {
     setDisplay('visible');
@@ -34,10 +27,9 @@ export const useMenuManager = (
           autoAlignment: true,
           allowedPlacements: ['bottom']
         }),
-        arrow({ element: arrowRef ? arrowRef : emptyRef }),
         shift()
       ],
-      placement: 'bottom-start'
+      placement: 'bottom-end'
     })
   };
 };
