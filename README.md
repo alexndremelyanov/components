@@ -1,7 +1,7 @@
 # components
 
-[Storybook](https://alexndremelyanov.github.io/delta-components)
-[GitHub](https://github.com/alexndremelyanov/delta-components)
+[Storybook](https://alexndremelyanov.github.io/components)
+[GitHub](https://github.com/alexndremelyanov/components)
 
 ## Installation
 
