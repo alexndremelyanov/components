@@ -15,7 +15,9 @@ export const TableHeadCell = forwardRef<
           display: 'flex',
           paddingX: '8px',
           alignItems: 'center',
-          height: '100%'
+          height: '100%',
+          textTransform: 'uppercase',
+          fontSize: '12px'
         }}
       >
         <EllipsisText>{children}</EllipsisText>

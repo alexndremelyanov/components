@@ -16,8 +16,15 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           'input:checked + span': {
             background: '#1db954'
           },
+
           'input:checked + span:before': {
             transform: 'translateX(22px)'
+          },
+          'input:focus-visible  + span': {
+            outlineColor: 'essential_outline',
+            outlineOffset: -1,
+            outlineWidth: 3,
+            outlineStyle: 'solid'
           },
           'input:not(:disabled) + span': {
             cursor: 'pointer',
@@ -35,7 +42,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           ref={ref}
           disabled={disabled}
           sx={{
-            display: 'none'
+            position: 'absolute',
+            opacity: 0,
+            cursor: 'pointer',
+            height: '0',
+            width: '0'
           }}
           checked={value as unknown as boolean}
           type="checkbox"
@@ -63,7 +74,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               background: 'white'
             }
           }}
-          tabIndex={disabled ? -1 : 0}
         />
       </label>
     );
