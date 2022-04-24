@@ -3,7 +3,7 @@ import { jsx } from '@theme-ui/core';
 import { Tooltip } from '../../lib';
 
 export default {
-  title: 'Tooltip',
+  title: 'Floating/Tooltip',
   component: Tooltip
 } as ComponentMeta<typeof Tooltip>;
 

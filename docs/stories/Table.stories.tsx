@@ -3,7 +3,7 @@ import { jsx } from '@theme-ui/core';
 import { Box, TableCell, TableHead, TableHeadCell, TableRow } from '../../lib';
 
 export default {
-  title: 'Table',
+  title: 'Data display/Table',
   component: Box
 } as ComponentMeta<typeof Box>;
 

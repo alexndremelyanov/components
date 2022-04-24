@@ -12,7 +12,7 @@ export const BreadCrumb = ({
   return (
     <span
       sx={{
-        '& > a': {
+        '& > a, button': {
           whiteSpace: 'nowrap',
           fontSize: '24px',
           fontWeight: 600,

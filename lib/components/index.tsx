@@ -16,7 +16,6 @@ export * from './ScrollCarousel';
 export * from './Info';
 export * from './Modal';
 export * from './TrapFocus';
-export * from './Portal';
 export * from './Anchor';
 export * from './AsButton';
 export * from './AsAnchor';

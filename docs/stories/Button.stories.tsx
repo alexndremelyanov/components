@@ -3,7 +3,7 @@ import { jsx } from '@theme-ui/core';
 import { Button } from '../../lib';
 
 export default {
-  title: 'Button',
+  title: 'Inputs/Button',
   component: Button
 } as ComponentMeta<typeof Button>;
 

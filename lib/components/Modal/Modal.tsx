@@ -15,7 +15,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         sx={{
           backgroundColor: 'decorative_subdued',
           display: 'flex',
-          width: { small: '600px', medium: '700px', large: '900px' }[size],
+          maxWidth: { small: '600px', medium: '700px', large: '900px' }[size],
+          width: '100%',
           maxHeight: '100%',
           overflow: 'auto',
           position: 'relative',

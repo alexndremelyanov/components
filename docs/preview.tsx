@@ -18,7 +18,9 @@ export const parameters = {
   },
   layout: 'fullscreen',
   options: {
-    storySort: {}
+    storySort: {
+      order: ['Inputs', 'Floating', 'Feedback', 'Data display']
+    }
   }
 };
 export const decorators = [

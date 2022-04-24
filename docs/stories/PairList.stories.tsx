@@ -3,7 +3,7 @@ import { jsx } from '@theme-ui/core';
 import { PairList } from '../../lib';
 
 export default {
-  title: 'PairList',
+  title: 'Data display/PairList',
   component: PairList
 } as ComponentMeta<typeof PairList>;
 
