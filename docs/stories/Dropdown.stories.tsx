@@ -9,7 +9,8 @@ import {
   Box,
   Button,
   ICON_MEDIUM_SIZE,
-  AsButton
+  AsButton,
+  Tooltip
 } from '../../lib';
 
 export default {

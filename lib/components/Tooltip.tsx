@@ -1,113 +1,101 @@
 import {
-  useFloating,
-  shift,
+  Placement,
   offset,
   flip,
-  arrow,
-  autoPlacement
-} from '@floating-ui/react-dom';
-import { jsx, useThemeUI } from '@theme-ui/core';
+  shift,
+  autoUpdate,
+  useFloating,
+  useInteractions,
+  useHover,
+  useFocus,
+  useRole,
+  useDismiss,
+  autoPlacement,
+  inline
+} from '@floating-ui/react-dom-interactions';
+import { jsx } from '@theme-ui/core';
 import {
+  cloneElement,
+  forwardRef,
   Fragment,
-  HTMLAttributes,
-  ReactFragment,
   ReactNode,
-  useCallback,
-  useRef,
+  useEffect,
   useState
 } from 'react';
-import { useDebounce } from '../hooks';
-import { TOOLTIP_ENTER_DELAY, TOOLTIP_EXIT_DELAY } from '../variables';
+import { Box } from './Box';
 
-export interface TooltipProps extends HTMLAttributes<ReactFragment> {
-  content: ReactNode;
+export interface TooltipProps {
+  label: ReactNode;
+  placement?: Placement;
+  children: JSX.Element;
 }
-let isEntering = false;
-export const Tooltip = ({ children, content, ...rest }: TooltipProps) => {
-  const arrowRef = useRef(null);
-  const {
-    theme: { colors }
-  } = useThemeUI();
-  const {
-    x,
-    y,
-    placement,
-    reference,
-    floating,
-    strategy,
-    middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }
-  } = useFloating({
-    middleware: [
-      offset(12),
-      autoPlacement(),
-      arrow({ element: arrowRef }),
-      shift()
-    ],
-    placement: 'top'
-  });
-  const [display, setDisplay] = useState<'visible' | 'hidden'>('hidden');
-  const show = useCallback(() => {
-    isEntering = true;
-    setTimeout(() => {
-      isEntering && setDisplay('visible');
-    }, TOOLTIP_ENTER_DELAY);
-  }, [isEntering]);
-  const hide = useCallback(() => {
-    isEntering = false;
-    setTimeout(() => {
-      setDisplay('hidden');
-    }, TOOLTIP_EXIT_DELAY);
-  }, []);
-  const staticSide = {
-    top: 'bottom',
-    right: 'left',
-    bottom: 'top',
-    left: 'right'
-  }[placement.split('-')[0]] as string;
-  return (
-    <Fragment>
-      <div
-        sx={{ width: 'fit-content' }}
-        ref={reference}
-        onFocus={show}
-        onBlur={hide}
-        onMouseLeave={hide}
-        onMouseEnter={show}
-      >
-        {children}
-      </div>
-      <div
-        ref={floating}
-        style={{
-          background: colors?.decorative_subdued as string,
-          fontWeight: 'bold',
-          fontSize: '14px',
-          padding: '10px 6px',
-          borderRadius: '4px',
-          boxShadow: '2px 4px 8px 7px rgba(0, 0, 0, 0.17)',
-          visibility: display,
-          position: strategy,
-          top: y ?? '',
-          left: x ?? ''
-        }}
-      >
-        <span sx={{ color: 'text_base', fontWeight: 500 }}>{content}</span>
-        <div
-          ref={arrowRef}
-          style={{
-            position: 'absolute',
-            background: colors?.decorative_subdued as string,
-            width: '8px',
-            height: '8px',
-            transform: 'rotate(45deg)',
-            left: arrowX != null ? `${arrowX}px` : '',
-            top: arrowY != null ? `${arrowY}px` : '',
-            right: '',
-            bottom: '',
-            [staticSide]: '-4px'
-          }}
-        />
-      </div>
-    </Fragment>
-  );
-};
+
+export const Tooltip = forwardRef(
+  ({ children, label, placement = 'top' }: TooltipProps, ref) => {
+    const [open, setOpen] = useState(false);
+    const { x, y, reference, floating, strategy, context, refs, update } =
+      useFloating({
+        placement,
+        open,
+        onOpenChange: setOpen,
+        middleware: [offset(6), flip(), shift({ padding: 6 })]
+      });
+
+    const { getReferenceProps, getFloatingProps } = useInteractions([
+      useHover(context, {
+        restMs: 1000
+      }),
+      useFocus(context),
+      useRole(context, { role: 'tooltip' }),
+      useDismiss(context)
+    ]);
+
+    useEffect(() => {
+      if (refs.reference.current && refs.floating.current && open) {
+        return autoUpdate(
+          refs.reference.current,
+          refs.floating.current,
+          update
+        );
+      }
+      return () => {};
+    }, [refs.reference, refs.floating, update, open]);
+    return (
+      <Fragment>
+        {cloneElement(children, {
+          ...getReferenceProps({
+            ref: reference,
+            ...children.props
+          })
+        })}
+        {open && (
+          <Box
+            sx={{
+              backgroundColor: 'decorative_subdued',
+              fontSize: '14px',
+              padding: '10px 6px',
+              color: 'text_base',
+              fontWeight: 500,
+              borderRadius: '4px',
+              boxShadow:
+                '0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%)',
+              borderWidth: '0.1px',
+              borderStyle: 'solid',
+              borderColor: 'border_base'
+            }}
+            {...getFloatingProps({
+              ref: floating,
+              style: {
+                position: strategy,
+                top: y ?? '',
+                left: x ?? ''
+              }
+            })}
+          >
+            {label}
+          </Box>
+        )}
+      </Fragment>
+    );
+  }
+);

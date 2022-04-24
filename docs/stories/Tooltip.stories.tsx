@@ -9,14 +9,15 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = args => (
   <Tooltip {...args}>
-    <Button color="success" size="large" variant="outlined">
-      Show tooltip
-    </Button>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ducimus,
+    </p>
   </Tooltip>
 );
 
 export const Basic = Template.bind({});
 
 Basic.args = {
-  content: 'Tooltip content here'
+  label: 'Tooltip content here',
+  placement: 'bottom-end'
 };

@@ -29,7 +29,7 @@ export const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>(
                 backgroundColor: 'rgba(255,255,255,.1)'
               },
               ...(open && { backgroundColor: 'rgba(255,255,255,.1)' }),
-              color: 'text_pepega',
+              color: 'text_base',
               fontWeight: 400
             }
           }}
