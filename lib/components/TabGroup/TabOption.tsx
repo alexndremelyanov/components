@@ -12,6 +12,7 @@ export const TabOption = forwardRef<HTMLAnchorElement, TabOptionProps>(
       <Anchor
         ref={ref}
         underline="none"
+        variant="h5"
         sx={{
           padding: '12px 20px',
           borderRadius: 5,
