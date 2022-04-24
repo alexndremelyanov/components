@@ -17,13 +17,13 @@ Basic.args = {
   activeId: '/settings/display/advanced',
   children: [
     <BreadCrumb id="/settings">
-      <Anchor>Settings</Anchor>
+      <Anchor href="#">Settings</Anchor>
     </BreadCrumb>,
     <BreadCrumb id="/settings/display">
-      <Anchor>Display</Anchor>
+      <Anchor href="#">Display</Anchor>
     </BreadCrumb>,
     <BreadCrumb id="/settings/display/advanced">
-      <Anchor>Advanced</Anchor>
+      <Anchor href="#">Advanced</Anchor>
     </BreadCrumb>
   ]
 };

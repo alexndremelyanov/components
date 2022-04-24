@@ -14,7 +14,7 @@ import {
 } from '../../lib';
 
 export default {
-  title: 'Floating/Dropdown',
+  title: 'Navigation/Dropdown',
   component: Dropdown
 } as ComponentMeta<typeof Dropdown>;
 

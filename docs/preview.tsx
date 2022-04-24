@@ -34,7 +34,8 @@ export const decorators = [
               overscrollBehaviorY: 'none',
               margin: 0,
               padding: 0,
-              fontSize: '14px'
+              fontSize: '14px',
+              height: '100vh'
             },
             '*': {
               boxSizing: 'border-box',
@@ -43,7 +44,7 @@ export const decorators = [
             }
           }}
         />
-        <Layout>
+        <Layout sx={{ height: '100vh' }}>
           <LayoutBody>
             <LayoutBodyMain>
               <Story />

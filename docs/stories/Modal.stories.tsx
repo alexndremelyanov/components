@@ -14,7 +14,7 @@ import {
 } from '../../lib';
 
 export default {
-  title: 'Floating/Modal',
+  title: 'Modal',
   component: Modal
 } as ComponentMeta<typeof Modal>;
 

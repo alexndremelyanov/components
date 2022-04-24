@@ -9,6 +9,7 @@ export const LayoutBodyMain = ({ children, ...rest }: LayoutBodyMainProps) => {
       sx={{
         width: '100%',
         marginTop: '20px',
+        height: '100%',
         paddingX: `${LAYOUT_BODY_PADDING}px`
       }}
       {...rest}

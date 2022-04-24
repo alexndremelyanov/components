@@ -186,9 +186,10 @@ const MenuComponent = forwardRef<any, DropdownProps>(
                 borderWidth: '0.1px',
                 borderStyle: 'solid',
                 borderColor: 'border_base',
-                padding: '4px',
                 boxShadow:
                   '0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%)',
+                padding: '4px',
+
                 fontWeight: 'bold',
                 fontSize: '14px',
                 borderRadius: '4px'

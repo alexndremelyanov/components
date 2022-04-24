@@ -1,99 +1,216 @@
+import {
+  autoUpdate,
+  size,
+  useId,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useListNavigation,
+  useRole,
+  flip,
+  offset
+} from '@floating-ui/react-dom-interactions';
 import { jsx } from '@theme-ui/core';
-import { useState } from 'react';
+import React, {
+  forwardRef,
+  useLayoutEffect,
+  useEffect,
+  useRef,
+  useState,
+  Fragment
+} from 'react';
 import { Box } from '../Box';
-import { TextField } from './TextField';
-export const Autocomplete = ({ suggestions, ...rest }) => {
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [userInput, setUserInput] = useState('');
-  const onChange = e => {
-    const userInput = e.currentTarget.value;
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+import { List, ListItem, ListItemProps } from '../List';
+import { TextField, TextFieldProps } from './TextField';
+
+interface ItemProps extends ListItemProps {
+  isActive: boolean;
+}
+
+const Item = forwardRef<HTMLLIElement, ItemProps>(
+  ({ children, isActive, ...rest }, ref) => {
+    const id = useId();
+    return (
+      <ListItem
+        ref={ref}
+        role="option"
+        id={id}
+        aria-selected={isActive}
+        {...rest}
+        sx={{
+          width: '100%',
+          paddingX: '8px',
+          height: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          borderRadius: 0,
+          '&:hover, &:active, &:focus, &:focus-visible': {
+            backgroundColor: 'rgba(255,255,255,.1)'
+          },
+          ...(isActive && { backgroundColor: 'rgba(255,255,255,.1)' }),
+          color: 'text_base',
+          fontWeight: 400
+        }}
+      >
+        {children}
+      </ListItem>
     );
-    setActiveSuggestion(0);
-    setShowSuggestions(true);
-    setFilteredSuggestions(filteredSuggestions);
-    setUserInput(e.currentTarget.value);
-  };
-
-  const onClick = e => {
-    setActiveSuggestion(0);
-    setFilteredSuggestions([]);
-    setShowSuggestions(false);
-    setUserInput(e.currentTarget.innerText);
-  };
-
-  const onKeyDown = e => {
-    if (e.keyCode === 13) {
-      setActiveSuggestion(0);
-      setShowSuggestions(false);
-      setUserInput(filteredSuggestions[activeSuggestion]);
-    } else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
+  }
+);
+export interface AutocompleteProps extends TextFieldProps {
+  data: string[];
+}
+export const Autocomplete = ({
+  data,
+  size: inputSize,
+  color,
+  variant,
+  ...rest
+}: AutocompleteProps) => {
+  const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const listRef = useRef<(HTMLElement | null)[]>([]);
+  const { x, y, reference, floating, strategy, context, refs, update } =
+    useFloating<HTMLInputElement>({
+      open,
+      onOpenChange: setOpen,
+      middleware: [
+        offset(3),
+        flip(),
+        size({
+          apply({ reference, height }) {
+            Object.assign(refs.floating.current?.style ?? {}, {
+              width: `${reference.width}px`,
+              maxHeight: `${height}px`
+            });
+          },
+          padding: 10
+        })
+      ]
+    });
+  useLayoutEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      if (activeIndex != null) {
+        listRef.current[activeIndex]?.scrollIntoView({
+          block: 'nearest'
+        });
       }
-      setActiveSuggestion(prev => prev - 1);
-    } else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return;
-      }
-      setActiveSuggestion(prev => prev + 1);
-    }
-  };
-
-  let suggestionsListComponent;
-
-  if (showSuggestions && userInput) {
-    if (filteredSuggestions.length) {
-      suggestionsListComponent = (
-        <ul
-          sx={{
-            position: 'absolute',
-            top: 40,
-            backgroundColor: 'red',
-            left: 0,
-            border: '1px solid #999',
-            borderTopWidth: '0',
-            listStyle: 'none',
-            marginTop: '0',
-            maxHeight: '143px',
-            overflowY: 'auto',
-            paddingLeft: '0',
-            width: '100%',
-            li: {
-              padding: '0.5rem'
-            }
-          }}
-        >
-          {filteredSuggestions.map((suggestion, index) => {
-            let className;
-            if (index === activeSuggestion) {
-              className = 'suggestion-active';
-            }
-            return (
-              <li className={className} key={suggestion} onClick={onClick}>
-                {suggestion}
-              </li>
-            );
-          })}
-        </ul>
-      );
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [activeIndex]);
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [
+      useRole(context, { role: 'listbox' }),
+      useDismiss(context),
+      useListNavigation(context, {
+        listRef,
+        activeIndex,
+        onNavigate: setActiveIndex,
+        virtual: true,
+        loop: true
+      })
+    ]
+  );
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    setInputValue(value);
+    if (value) {
+      setOpen(true);
+      setActiveIndex(0);
+    } else {
+      setOpen(false);
     }
   }
+  useEffect(() => {
+    if (open && refs.reference.current && refs.floating.current) {
+      return autoUpdate(refs.reference.current, refs.floating.current, update);
+    }
+    return () => {};
+  }, [open, update, refs.reference, refs.floating]);
+  const items = data.filter(item =>
+    item.toLowerCase().startsWith(inputValue.toLowerCase())
+  );
+  if (open && items.length === 0 && activeIndex !== null) {
+    setActiveIndex(null);
+  }
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Fragment>
       <TextField
-        {...rest}
-        type="text"
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        value={userInput}
+        size={inputSize}
+        color={color}
+        variant={variant}
+        {...getReferenceProps({
+          ref: reference,
+          onChange,
+          value: inputValue,
+          ...rest,
+          'aria-autocomplete': 'list',
+          onKeyDown(event) {
+            if (
+              event.key === 'Enter' &&
+              activeIndex != null &&
+              items[activeIndex]
+            ) {
+              setInputValue(items[activeIndex]);
+              setActiveIndex(null);
+              setOpen(false);
+            }
+          },
+          onBlur(event) {
+            if (
+              !refs.floating.current?.contains(
+                event.relatedTarget as HTMLElement | null
+              )
+            ) {
+              setOpen(false);
+            }
+          }
+        })}
       />
-      {suggestionsListComponent}
-    </Box>
+      {open && items.length > 0 && (
+        <Box
+          {...getFloatingProps({
+            ref: floating,
+            style: {
+              position: strategy,
+              left: x ?? '',
+              top: y ?? '',
+              overflowY: 'auto'
+            }
+          })}
+        >
+          <List
+            sx={{
+              backgroundColor: 'decorative_subdued',
+              borderRadius: 5,
+              borderWidth: '0.1px',
+              borderStyle: 'solid',
+              borderColor: 'border_base',
+              boxShadow:
+                '0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%)'
+            }}
+          >
+            {items.map((item, index) => (
+              <Item
+                {...getItemProps({
+                  key: item,
+                  ref(node) {
+                    listRef.current[index] = node;
+                  },
+                  onClick() {
+                    setInputValue(item);
+                    setOpen(false);
+                  }
+                })}
+                isActive={activeIndex === index}
+              >
+                {item}
+              </Item>
+            ))}
+          </List>
+        </Box>
+      )}
+    </Fragment>
   );
 };
-export default Autocomplete;

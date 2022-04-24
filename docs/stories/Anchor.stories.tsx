@@ -12,5 +12,6 @@ const Template: ComponentStory<typeof Anchor> = args => <Anchor {...args} />;
 export const Basic = Template.bind({});
 
 Basic.args = {
+  href: '#',
   children: 'Aboba'
 };

@@ -29,13 +29,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         disabled={disabled}
         style={{ opacity: disabled ? DISABLED_OPACITY : 1 }}
         sx={{
-          outlineWidth: 3,
+          '&:focus': {
+            outline: 'none'
+          },
           border: 'none',
           borderRadius: 5,
           lineHeight: '1rem',
-          '&:focus': {
-            outlineWidth: 3
-          },
           letterSpacing: 'normal',
           ...{
             contained: {
