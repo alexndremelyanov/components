@@ -12,7 +12,15 @@ export const AsButton = forwardRef<HTMLButtonElement, AsButtonProps>(
           opacity: disabled ? DISABLED_OPACITY : 1,
           cursor: disabled ? 'auto' : 'pointer'
         }}
-        sx={{ border: 'none', background: 'none' }}
+        sx={{
+          border: 'none',
+          background: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
         {...rest}
       />
     );

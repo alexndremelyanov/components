@@ -18,6 +18,7 @@ export * from './Heading';
 export * from './ScrollCarousel';
 export * from './List';
 export * from './Modal';
+export * from './Icon';
 
 //Navigation
 export * from './TabGroup';
@@ -30,6 +31,7 @@ export * from './AsAnchor';
 export * from './Tooltip';
 export * from './table';
 export * from './PairList';
+export * from './Chip';
 
 //IDK
 export * from './Container';

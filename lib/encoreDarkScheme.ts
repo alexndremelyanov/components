@@ -30,7 +30,6 @@ export const encoreDarkScheme = {
     essential_secondary: '#0d72ea',
     essential_positive: '#1cb454',
     essential_announcement: '#0d72ea',
-
     decorative_base: '#fff',
     decorative_subdued: '#282828'
   }

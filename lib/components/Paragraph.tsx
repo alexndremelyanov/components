@@ -1,9 +1,15 @@
 import { jsx } from '@theme-ui/core';
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 
 export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {}
-export const Paragraph = ({ ...rest }: ParagraphProps) => {
-  return (
-    <p sx={{ margin: 0, padding: 0, boxSizing: 'border-box' }} {...rest} />
-  );
-};
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ ...rest }: ParagraphProps, ref) => {
+    return (
+      <p
+        ref={ref}
+        sx={{ margin: 0, padding: 0, boxSizing: 'border-box' }}
+        {...rest}
+      />
+    );
+  }
+);

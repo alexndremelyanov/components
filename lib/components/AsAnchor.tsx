@@ -9,11 +9,13 @@ export const AsAnchor = forwardRef<HTMLAnchorElement, AsAnchorProps>(
         ref={ref}
         sx={{
           textDecoration: 'none',
+          cursor: 'pointer',
           color: 'inherit',
           '&:hover, &:active, &:focus-visible': {
             textDecoratione: 'none'
           }
         }}
+        tabIndex={0}
         {...rest}
       />
     );
