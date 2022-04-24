@@ -22,3 +22,4 @@ export * from './AsButton';
 export * from './AsAnchor';
 export * from './Tooltip';
 export * from './Dropdown';
+export * from './Dialog';

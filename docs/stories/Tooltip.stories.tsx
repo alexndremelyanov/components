@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { jsx } from '@theme-ui/core';
-import { Button, Tooltip } from '../../lib';
+import { Tooltip } from '../../lib';
 
 export default {
   title: 'Tooltip',
@@ -9,14 +9,14 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = args => (
   <Tooltip {...args}>
-    <p>
+    <p sx={{ width: 'fit-content' }}>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ducimus,
     </p>
   </Tooltip>
 );
 
 export const Basic = Template.bind({});
-
+``;
 Basic.args = {
   label: 'Tooltip content here',
   placement: 'bottom-end'

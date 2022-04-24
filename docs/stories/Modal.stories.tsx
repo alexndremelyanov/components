@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { jsx } from '@theme-ui/core';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Modal,
   Box,
@@ -9,7 +9,8 @@ import {
   ModalFooter,
   Heading,
   Tooltip,
-  Button
+  Button,
+  Dialog
 } from '../../lib';
 
 export default {
@@ -18,43 +19,50 @@ export default {
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = args => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <Box>
-      <Button onClick={() => setIsOpen(true)} size="medium" uppercase zoomable>
-        Open modal
-      </Button>
-      <Modal size="medium" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <ModalHeading>
-          <Heading level={1}>Modal Heading</Heading>
-        </ModalHeading>
-        <ModalBody>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-            fugit, a alias beatae obcaecati sit vitae eligendi magni, esse modi
-            iusto? Vitae praesentium aut repudiandae sequi maxime consectetur
-            rerum dolores. Lorem, ipsum dolor sit amet consectetur adipisicing
-            elit. Est voluptates ab officiis dignissimos repudiandae ducimus,
-            facere natus fugiat? Animi mollitia excepturi beatae rerum suscipit
-            quisquam et, molestias delectus tenetur doloribus.
-          </p>
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            onClick={() => setIsOpen(false)}
-            color="success"
-            variant="outlined"
-            uppercase
-            sx={{ marginLeft: 'auto' }}
-          >
-            Save changes
-          </Button>
-        </ModalFooter>
-      </Modal>
+      <Dialog
+        render={({ close }) => (
+          <Modal {...args} close={close}>
+            <ModalHeading>
+              <Heading>Modal heading content!</Heading>
+            </ModalHeading>
+            <ModalBody>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+                pariatur aut laborum, fugiat accusamus laudantium et voluptates
+                quaerat incidunt, iste officia numquam mollitia exercitationem
+                consectetur omnis repudiandae libero facere veniam. Lorem ipsum
+                dolor sit amet consectetur, adipisicing elit. Exercitationem
+                expedita itaque cum inventore reprehenderit ad voluptatem
+                veritatis aperiam praesentium recusandae debitis ipsam aliquam
+                quia facilis voluptatum quis non, corporis nihil?
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                sx={{ marginLeft: 'auto' }}
+                uppercase
+                variant="outlined"
+                color="success"
+                onClick={close}
+              >
+                Close
+              </Button>
+            </ModalFooter>
+          </Modal>
+        )}
+      >
+        <Button size="medium" uppercase zoomable>
+          Open modal
+        </Button>
+      </Dialog>
     </Box>
   );
 };
 
 export const Basic = Template.bind({});
 
-Basic.args = {};
+Basic.args = {
+  size: 'medium'
+};
