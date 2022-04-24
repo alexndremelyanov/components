@@ -14,7 +14,7 @@ import {
 } from '../../lib';
 
 export default {
-  title: 'Modal',
+  title: 'Dialog/Modal',
   component: Modal
 } as ComponentMeta<typeof Modal>;
 

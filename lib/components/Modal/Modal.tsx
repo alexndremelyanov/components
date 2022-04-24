@@ -5,7 +5,7 @@ import { MODAL_PADDING, ICON_MEDIUM_SIZE } from '../../variables';
 import { AsButton } from '../AsButton';
 import { Box, BoxProps } from '../Box';
 export interface ModalProps extends BoxProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'page';
   close: () => void;
 }
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(
@@ -15,7 +15,16 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         sx={{
           backgroundColor: 'decorative_subdued',
           display: 'flex',
-          maxWidth: { small: '600px', medium: '700px', large: '900px' }[size],
+          ...{
+            small: { maxWidth: '550px' },
+            medium: { maxWidth: '650px' },
+            large: { maxWidth: '750px' },
+            page: {
+              maxWidth: '100%',
+              height: '100vh',
+              '& > div:last-child': { marginTop: 'auto' }
+            }
+          }[size],
           width: '100%',
           maxHeight: '100%',
           overflow: 'auto',

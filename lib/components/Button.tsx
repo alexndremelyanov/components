@@ -92,7 +92,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 color: 'text_base'
               },
               secondary: {
-                color: 'essential_secondary'
+                color: 'text_opposite_subdued'
               },
               success: {
                 color: 'essential_positive'

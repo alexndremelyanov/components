@@ -15,6 +15,7 @@ export const encoreDarkScheme = {
     text_warning: '#ffa42b',
     text_negative: '#000000',
     text_positive: '#1ed760',
+    text_opposite_subdued: '#6A6A6A',
     text_announcement: '#3d91f4',
     border_base: '#535353',
     essential_accent: '#333333',
@@ -29,6 +30,7 @@ export const encoreDarkScheme = {
     essential_secondary: '#0d72ea',
     essential_positive: '#1cb454',
     essential_announcement: '#0d72ea',
+
     decorative_base: '#fff',
     decorative_subdued: '#282828'
   }
