@@ -11,4 +11,6 @@ const Template: ComponentStory<typeof Box> = args => <Box {...args} />;
 
 export const Basic = Template.bind({});
 
-Basic.args = {};
+Basic.args = {
+  style: { width: '400px', height: '400px', background: 'red' }
+};

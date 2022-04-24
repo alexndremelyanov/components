@@ -41,8 +41,7 @@ export const ResizableBox = ({
     <Box
       style={{ minWidth: width + 'px', width: width + 'px' }}
       sx={{
-        position: 'relative',
-        height: '100%'
+        position: 'relative'
       }}
       ref={resizableBoxRef}
       {...rest}

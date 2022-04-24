@@ -1,20 +1,23 @@
 import { jsx } from '@theme-ui/core';
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { Box } from '../Box';
 import { EllipsisText } from '../EllipsisText';
-export interface TableCellProps extends HTMLAttributes<HTMLDivElement> {}
-export const TableCell = ({ children, ...rest }: TableCellProps) => {
-  return (
-    <Box
-      sx={{
-        paddingX: '8px',
-        display: 'flex',
-        height: '36px',
-        alignItems: 'center'
-      }}
-      {...rest}
-    >
-      <EllipsisText>{children}</EllipsisText>
-    </Box>
-  );
-};
+export interface TableCellProps extends HTMLAttributes<HTMLTableCellElement> {}
+export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
+  ({ children, ...rest }: TableCellProps, ref) => {
+    return (
+      <td ref={ref} sx={{ height: '56px' }} {...rest}>
+        <Box
+          sx={{
+            display: 'flex',
+            paddingX: '8px',
+            alignItems: 'center',
+            height: '100%'
+          }}
+        >
+          <EllipsisText>{children}</EllipsisText>
+        </Box>
+      </td>
+    );
+  }
+);

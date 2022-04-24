@@ -7,8 +7,13 @@ export const CardHeading = ({ children, ...rest }: CardHeadingProps) => {
     <Box
       sx={{
         width: '100%',
-        padding: '24px 24px 0 24px'
+        display: 'flex',
+        gap: 2,
+        justifyContent: 'space-between',
+        padding: '24px 24px 0 24px',
+        alignItems: 'start'
       }}
+      {...rest}
     >
       {children}
     </Box>

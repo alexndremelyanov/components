@@ -2,7 +2,7 @@ import { jsx } from '@theme-ui/core';
 import { forwardRef, HTMLAttributes } from 'react';
 import { Box } from '../Box';
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'auto';
 }
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ children, size = 'medium', ...rest }: CardProps, ref) => {
@@ -12,8 +12,12 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         sx={{
           borderRadius: '4px',
           width: '100%',
-          maxWidth:
-            size === 'small' ? '600px' : size === 'medium' ? '750px' : '900px',
+          ...{
+            small: { maxWidth: '400px' },
+            medium: { maxWidth: '600px' },
+            large: { maxWidth: '800px' },
+            auto: {}
+          }[size],
           backgroundColor: 'rgb(24, 24, 24)'
         }}
         {...rest}

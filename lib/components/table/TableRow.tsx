@@ -1,19 +1,24 @@
 import { jsx } from '@theme-ui/core';
-import { HTMLAttributes } from 'react';
-import { Box } from '../Box';
-export interface TableRowProps extends HTMLAttributes<HTMLDivElement> {}
-export const TableRow = ({ ...rest }: TableRowProps) => {
-  return (
-    <Box
-      sx={{
-        borderRadius: 5,
-        display: 'flex',
-        height: '56px',
-        width: 'fit-content',
-        alignItems: 'center',
-        '&:hover, &:active, &:focus-visible': { backgroundColor: '#2b2b2a' }
-      }}
-      {...rest}
-    />
-  );
-};
+import { forwardRef, HTMLAttributes } from 'react';
+export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {}
+export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+  ({ ...rest }: TableRowProps, ref) => {
+    return (
+      <tr
+        ref={ref}
+        sx={{
+          '& > td:first-child': {
+            borderTopLeftRadius: 5,
+            borderBottomLeftRadius: 5
+          },
+          '& > td:last-child': {
+            borderTopRightRadius: 5,
+            borderBottomRightRadius: 5
+          },
+          '&:hover, &:active, &:focus-visible': { backgroundColor: '#2b2b2a' }
+        }}
+        {...rest}
+      />
+    );
+  }
+);

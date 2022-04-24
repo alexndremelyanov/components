@@ -35,18 +35,27 @@ export const ScrollCarousel = ({ children, ...rest }: ScrollCarousel) => {
     scrollCheck();
   }, [scrl.current?.scrollWidth]);
   return (
-    <Box sx={{ position: 'relative', width: '100%' }} {...rest}>
+    <Box
+      sx={{
+        position: 'relative',
+        width: '100%'
+      }}
+      {...rest}
+    >
       {scrollX !== 0 && (
         <button
           sx={{
+            background: 'none',
             position: 'absolute',
+            border: 'none',
             left: 0,
             top: '50%',
             height: 'calc(100% + 2px)',
+            cursor: 'pointer',
             backdropFilter: 'blur(2px)',
             aspectRatio: '1/1',
             display: 'flex',
-            width: '30px',
+            width: '40px',
             alignItems: 'center',
             transform: 'translateY(-50%)'
           }}
@@ -64,6 +73,9 @@ export const ScrollCarousel = ({ children, ...rest }: ScrollCarousel) => {
         sx={{
           overflow: 'scroll',
           maxWidth: '100%',
+          height: 'min-content',
+          display: 'flex',
+          alignItems: 'center',
           scrollBehavior: 'smooth',
           '&::-webkit-scrollbar': {
             display: 'none'
@@ -76,12 +88,15 @@ export const ScrollCarousel = ({ children, ...rest }: ScrollCarousel) => {
       {!scrolEnd && (
         <button
           sx={{
+            background: 'none',
             position: 'absolute',
+            border: 'none',
             top: '50%',
+            cursor: 'pointer',
             right: 0,
             height: 'calc(100% + 2px)',
             display: 'flex',
-            width: '30px',
+            width: '40px',
             alignItems: 'center',
             backdropFilter: 'blur(2px)',
             aspectRatio: '1/1',
