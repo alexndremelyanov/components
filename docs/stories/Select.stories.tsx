@@ -1,13 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { jsx } from '@theme-ui/core';
-import { Select } from '../../lib';
+import { Select, Tooltip } from '../../lib';
 
 export default {
   title: 'Inputs/Select',
   component: Select
 } as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof Select> = args => <Select {...args} />;
+const Template: ComponentStory<typeof Select> = args => (
+  <Tooltip label="Choose one">
+    <Select {...args} />
+  </Tooltip>
+);
 
 export const Basic = Template.bind({});
 

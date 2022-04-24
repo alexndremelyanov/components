@@ -9,9 +9,7 @@ import {
   useHover,
   useFocus,
   useRole,
-  useDismiss,
-  autoPlacement,
-  inline
+  useDismiss
 } from '@floating-ui/react-dom-interactions';
 import { jsx } from '@theme-ui/core';
 import {
@@ -22,9 +20,9 @@ import {
   useEffect,
   useState
 } from 'react';
-import { Box } from './Box';
+import { Box, BoxProps } from './Box';
 
-export interface TooltipProps {
+export interface TooltipProps extends BoxProps {
   label: ReactNode;
   placement?: Placement;
   children: JSX.Element;

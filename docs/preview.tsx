@@ -44,9 +44,17 @@ export const decorators = [
             }
           }}
         />
-        <Layout sx={{ height: '100vh' }}>
+        <Layout>
           <LayoutBody>
-            <LayoutBodyMain>
+            <LayoutBodyMain
+              sx={{
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                m: 0
+              }}
+            >
               <Story />
             </LayoutBodyMain>
           </LayoutBody>

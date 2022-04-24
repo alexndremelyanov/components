@@ -3,7 +3,7 @@ import { jsx } from '@theme-ui/core';
 import { Tooltip } from '../../lib';
 
 export default {
-  title: 'Tooltip',
+  title: 'Data display/Tooltip',
   component: Tooltip
 } as ComponentMeta<typeof Tooltip>;
 
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Tooltip> = args => (
 );
 
 export const Basic = Template.bind({});
-``;
+
 Basic.args = {
   label: 'Tooltip content here',
   placement: 'bottom-end'

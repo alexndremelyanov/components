@@ -14,6 +14,7 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       <a
         ref={ref}
         sx={{
+          cursor: 'pointer',
           ...{
             none: {
               textDecoration: 'none'
@@ -28,11 +29,7 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
               textDecoration: 'underline'
             }
           }[underline],
-          ...({
-            body: {
-              color: 'text_subdued'
-            }
-          }[variant] || headingStyles[variant]),
+          ...(headingStyles[variant] || headingStyles[variant]),
           padding: 0,
           margin: 0
         }}

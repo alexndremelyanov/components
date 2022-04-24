@@ -1,26 +1,37 @@
-export * from './shallow';
+//Feedback
+export * from './Info';
+export * from './Loader';
+
+//Inputs
 export * from './input';
+export * from './Button';
+export * from './AsButton';
+
+//Layout
 export * from './layout';
+export * from './shallow';
+export * from './Box';
+export * from './Paragraph';
 export * from './Card';
-export * from './table';
-export * from './Container';
-export * from './ResizableBox';
 export * from './EllipsisText';
 export * from './Heading';
-export * from './PairList';
-export * from './BreadCrumbs';
-export * from './Box';
-export * from './TabGroup';
-export * from './Button';
 export * from './ScrollCarousel';
-export * from './Info';
-export * from './Modal';
-export * from './TrapFocus';
-export * from './Anchor';
-export * from './AsButton';
-export * from './AsAnchor';
-export * from './Tooltip';
-export * from './Dropdown';
-export * from './Dialog';
 export * from './List';
-export * from './Paragraph';
+export * from './Modal';
+
+//Navigation
+export * from './TabGroup';
+export * from './BreadCrumbs';
+export * from './Dropdown';
+export * from './Anchor';
+export * from './AsAnchor';
+
+//Data display
+export * from './Tooltip';
+export * from './table';
+export * from './PairList';
+
+//IDK
+export * from './Container';
+export * from './ResizableBox';
+export * from './Dialog';

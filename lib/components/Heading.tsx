@@ -5,12 +5,13 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 export const Heading = ({ level = 1, ...rest }: HeadingProps) => {
-  const Tag: any = `h${level}`;
+  const tag = `h${level}`;
+  const Tag: any = tag;
   //TODO FIX any
   return (
     <Tag
       sx={{
-        ...headingStyles[level],
+        ...headingStyles[tag],
         margin: 0,
         padding: 0
       }}
@@ -20,32 +21,32 @@ export const Heading = ({ level = 1, ...rest }: HeadingProps) => {
 };
 
 export const headingStyles = {
-  1: {
+  h1: {
     fontSize: '26px',
     fontWeight: 600,
     color: 'text_base'
   },
-  2: {
+  h2: {
     fontSize: '22px',
     fontWeight: 600,
     color: 'text_base'
   },
-  3: {
+  h3: {
     fontSize: '18px',
     fontWeight: 600,
     color: 'text_base'
   },
-  4: {
+  h4: {
     fontSize: '16px',
     fontWeight: 600,
     color: 'text_base'
   },
-  5: {
+  h5: {
     fontSize: '14px',
     fontWeight: 600,
     color: 'text_base'
   },
-  6: {
+  h6: {
     fontSize: '12px',
     fontWeight: 600,
     color: 'text_base'

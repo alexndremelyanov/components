@@ -90,14 +90,13 @@
     "@emotion/react": "^11.5.0",
     "@theme-ui/core": "^0.11.3",
     "react": "^17.0.2",
-    "react-dnd": "^15.1.1",
-    "react-dnd-html5-backend": "^15.1.2",
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^0.6.3",
     "@floating-ui/react-dom-interactions": "^0.3.1",
-    "focus-trap-react": "^8.9.2",
+    "@floating-ui/react-dom": "^0.6.3",
+    "react-dnd-html5-backend": "^15.1.2",
+    "react-dnd": "^15.1.1",
     "react-icons": "^4.3.1",
     "simplebar-react": "^2.3.6"
   },

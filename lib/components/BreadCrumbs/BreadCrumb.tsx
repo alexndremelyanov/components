@@ -12,10 +12,8 @@ export const BreadCrumb = ({
   return (
     <span
       sx={{
-        '& > *': {
+        '& > a, button': {
           whiteSpace: 'nowrap',
-          fontSize: '24px',
-          fontWeight: 600,
           color: isActive ? 'text_base' : 'text_subdued',
           '&:hover, &:focus-visible, &:active': {
             color: 'text_base'

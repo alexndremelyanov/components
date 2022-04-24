@@ -10,10 +10,11 @@ export const TabOption = forwardRef<HTMLAnchorElement, TabOptionProps>(
     const { activeId } = useContext(TabContext);
     return (
       <Anchor
+        ref={ref}
+        underline="none"
         sx={{
           padding: '12px 20px',
           borderRadius: 5,
-          cursor: 'pointer',
           textAlign: 'center',
           display: 'inline-block',
           ...(activeId === id && {
