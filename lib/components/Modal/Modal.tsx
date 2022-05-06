@@ -29,9 +29,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           maxHeight: '100%',
           overflow: 'auto',
           position: 'relative',
-          borderWidth: '0.1px',
-          borderStyle: 'solid',
-          borderColor: 'border_base',
+          // borderWidth: '0.1px',
+          // borderStyle: 'solid',
+          // borderColor: 'border_base',
           flexDirection: 'column',
           borderRadius: 4
         }}

@@ -15,7 +15,7 @@ export const Container: FC<ContainerProps> = ({
   const theme = propsTheme || encoreDarkScheme;
   return (
     <Fragment>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} {...rest}>
         <Box sx={{ position: 'relative', zIndex: 999 }} id="modal-root" />
         {children}
       </ThemeProvider>

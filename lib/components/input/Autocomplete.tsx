@@ -187,6 +187,7 @@ export const Autocomplete = ({
               borderWidth: '0.1px',
               borderStyle: 'solid',
               borderColor: 'border_base',
+
               boxShadow:
                 '0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%)'
             }}

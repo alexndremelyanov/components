@@ -1,13 +1,8 @@
-//Feedback
 export * from './Info';
 export * from './Loader';
-
-//Inputs
 export * from './input';
 export * from './Button';
 export * from './AsButton';
-
-//Layout
 export * from './layout';
 export * from './shallow';
 export * from './Box';
@@ -19,21 +14,16 @@ export * from './ScrollCarousel';
 export * from './List';
 export * from './Modal';
 export * from './Icon';
-
-//Navigation
+export * from './Confirm';
 export * from './TabGroup';
 export * from './BreadCrumbs';
 export * from './Dropdown';
 export * from './Anchor';
 export * from './AsAnchor';
-
-//Data display
 export * from './Tooltip';
 export * from './table';
 export * from './PairList';
 export * from './Chip';
-
-//IDK
 export * from './Container';
 export * from './ResizableBox';
 export * from './Dialog';

@@ -1,74 +1,19 @@
-import { keyframes } from '@emotion/react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { jsx } from '@theme-ui/core';
 import { useState } from 'react';
-import { Box, Heading, Button, Dialog, Paragraph, BoxProps } from '../../lib';
-interface ConfirmProps extends BoxProps {
-  onConfirm: () => void;
-  onCancel: () => void;
-}
-const animation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(calc(-100% / 2));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-const Confirm = ({ onConfirm, onCancel, ...rest }: ConfirmProps) => {
-  return (
-    <Box
-      sx={{
-        animation: `${animation} 0.3s ease-out`,
-        backgroundColor: 'text_base',
-        width: '350px',
-        padding: '16px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        borderRadius: '8px'
-      }}
-      {...rest}
-    >
-      <Heading level={3} sx={{ color: 'text_negative' }}>
-        Are you sure?
-      </Heading>
-      <Paragraph sx={{ color: 'text_opposite_subdued' }}>
-        This action cannot be undone.
-      </Paragraph>
-      <Box
-        sx={{
-          display: 'flex',
-          marginTop: '30px',
-          justifyContent: 'space-between'
-        }}
-      >
-        <Button
-          onClick={onCancel}
-          size="large"
-          zoomable
-          uppercase
-          variant="text"
-          color="secondary"
-        >
-          Cancel
-        </Button>
-        <Button
-          onClick={onConfirm}
-          size="large"
-          zoomable
-          uppercase
-          variant="contained"
-          color="success"
-        >
-          Confirm
-        </Button>
-      </Box>
-    </Box>
-  );
-};
+import {
+  Box,
+  Heading,
+  Button,
+  Dialog,
+  Paragraph,
+  Confirm,
+  ConfirmHeader,
+  ConfirmBody,
+  ConfirmFooter,
+  ConfirmCancelButton,
+  ConfirmButton
+} from '../../lib';
 
 export default {
   title: 'Dialog/Confirm',
@@ -76,25 +21,30 @@ export default {
 } as ComponentMeta<typeof Confirm>;
 
 const Template: ComponentStory<typeof Confirm> = args => {
-  const [value, setValue] = useState('no value');
+  const [value, setValue] = useState('undefined');
   return (
     <Box>
       <Dialog
         render={({ close }) => (
-          <Confirm
-            onConfirm={() => {
-              setValue('confirmed');
-              close();
-            }}
-            onCancel={() => {
-              setValue('canceled');
-              close();
-            }}
-          />
+          <Confirm>
+            <ConfirmHeader>Are you sure?</ConfirmHeader>
+            <ConfirmBody>This action cannot be undone.</ConfirmBody>
+            <ConfirmFooter>
+              <ConfirmCancelButton onClick={close}>Cancel</ConfirmCancelButton>
+              <ConfirmButton
+                onClick={() => {
+                  setValue('confirmed');
+                  close();
+                }}
+              >
+                Confirm
+              </ConfirmButton>
+            </ConfirmFooter>
+          </Confirm>
         )}
       >
         <Button size="medium" uppercase zoomable>
-          Open question
+          Open confirm
         </Button>
       </Dialog>
       {value}

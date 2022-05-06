@@ -38,7 +38,6 @@ import {
 } from '../../lib';
 import 'simplebar/dist/simplebar.min.css';
 import 'react-virtualized/styles.css';
-import 'tippy.js/dist/tippy.css';
 
 export const HeadItemsContext = createContext({} as any);
 const CustomApp = ({ Component, pageProps, ui }) => {

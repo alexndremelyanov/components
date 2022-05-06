@@ -34,8 +34,7 @@ export const decorators = [
               overscrollBehaviorY: 'none',
               margin: 0,
               padding: 0,
-              fontSize: '14px',
-              height: '100vh'
+              fontSize: '14px'
             },
             '*': {
               boxSizing: 'border-box',
@@ -48,11 +47,10 @@ export const decorators = [
           <LayoutBody>
             <LayoutBodyMain
               sx={{
-                height: '100vh',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                m: 0
+                m: 20
               }}
             >
               <Story />

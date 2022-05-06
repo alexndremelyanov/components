@@ -13,4 +13,6 @@ const Template: ComponentStory<typeof TextField> = args => (
 
 export const Basic = Template.bind({});
 
-Basic.args = {};
+Basic.args = {
+  placeholder: 'Placeholder text'
+};
