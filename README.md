@@ -3,12 +3,6 @@
 [Storybook](https://alexndremelyanov.github.io/components)
 [GitHub](https://github.com/alexndremelyanov/components)
 
-## Installation
-
-```sh
-npm install --save delta-components
-```
-
 ## Usage
 
 ```jsx
